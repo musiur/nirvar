@@ -7,7 +7,7 @@ export default function HeroSectionHome() {
     <section>
       <div className="container">
         <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
+          <div className="space-y-8">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
               Increase Awareness of Dysmenorrhea
             </h1>
@@ -18,14 +18,14 @@ export default function HeroSectionHome() {
               partners.
             </p>
           </div>
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-full max-w-sm space-y-2 pt-8">
             <form className="flex space-x-2">
               <Input
                 className="max-w-lg flex-1"
                 placeholder="Enter your email"
                 type="email"
               />
-              <Button type="submit">Sign Up</Button>
+              <Button type="submit">Be Enlightened</Button>
             </form>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Sign up to learn more about dysmenorrhea and how you can support

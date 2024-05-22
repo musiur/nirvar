@@ -11,9 +11,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export default function Component() {
+export default function Page() {
   return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-gray-100 px-4 py-12 dark:bg-gray-950">
+    <div className="flex items-center justify-center">
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
