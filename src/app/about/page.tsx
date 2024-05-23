@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Component() {
   return (
-    <main>
+    <div>
       <section className="w-full ">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -285,6 +285,6 @@ export default function Component() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

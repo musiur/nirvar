@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Component() {
   return (
-    <main>
+    <div>
       <section className="w-full">
         <div className="container">
           <div className="flex flex-col items-center justify-center space-y-8">
@@ -48,6 +48,6 @@ export default function Component() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

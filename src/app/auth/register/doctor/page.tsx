@@ -16,17 +16,22 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import InputX from "@/app/_utils/components/input-x";
 import { Form } from "@/components/ui/form";
-import { Register } from "../_utils/actions";
 import FetchResponse from "@/app/_utils/components/fetch.response";
 import SubmitButton from "@/app/_utils/components/submit.button";
 import { useRouter } from "next/navigation";
+import { DoctorRegister } from "../../_utils/actions";
+import SelectX from "@/app/_utils/components/select-x";
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  email: z.string().min(1),
-  password: z.string().min(8),
+  username: z.string().min(1),
+  password: z.string().min(1),
+  gender: z.string().min(1),
+  age: z.number().min(1),
+  address: z.string().min(1),
+  medical_college: z.string().min(1),
+  degree: z.string().min(1),
+  linkedIn: z.string().min(1),
+  year_of_passing: z.string().min(1),
 });
 
 type T_FormSchema = z.infer<typeof FormSchema>;
@@ -37,14 +42,20 @@ export default function Page() {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       username: "",
-      email: "",
       password: "",
+      gender: "",
+      age: 24,
+      address: "",
+      medical_college: "",
+      degree: "",
+      linkedIn: "",
+      year_of_passing: "",
     },
   });
 
   const onSubmit = async (data: T_FormSchema) => {
-    const result: any = await Register(data);
-    // console.log(result);
+    const result: any = await DoctorRegister(data);
+    console.log(result);
     FetchResponse({
       apiResponse: result,
       title: "Registration",
@@ -59,15 +70,52 @@ export default function Page() {
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
-            Register
+            Register As A Doctor
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <InputX form={form} name="username" label="Username" />
-              <InputX form={form} name="email" label="Email Address" />
-              <InputX form={form} name="password" label="Password" />
+              <InputX
+                form={form}
+                name="password"
+                label="Password"
+                type="password"
+              />
+              <SelectX
+                form={form}
+                name="gender"
+                label="Gender"
+                options={[
+                  { label: "Male", value: "Male" },
+                  { label: "FeMale", value: "FeMale" },
+                ]}
+              />
+              <InputX form={form} name="age" label="Age" type="number" />
+
+              <InputX
+                form={form}
+                name="address"
+                label="Address"
+                type="textarea"
+              />
+              <InputX
+                form={form}
+                name="medical_college"
+                label="Medical College"
+              />
+              <InputX form={form} name="degree" label="Degree" />
+              <InputX
+                form={form}
+                name="linkedIn"
+                label="LinkedIn Profile Link"
+              />
+              <InputX
+                form={form}
+                name="year_of_passing"
+                label="Year of passing"
+              />
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -107,14 +155,14 @@ export default function Page() {
             >
               Login
             </Link>
-          </div>
-          <div className="text-center text-sm text-gray-500 dark:text-gray-400">
-            <Link
-              className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-              href="/auth/register/doctor"
-            >
-              Retister As A Doctor!
-            </Link>
+            <div className="text-center text-sm text-gray-500 dark:text-gray-400">
+              <Link
+                className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                href="/auth/register/doctor"
+              >
+                Retister As Normal User!
+              </Link>
+            </div>
           </div>
         </CardFooter>
       </Card>

@@ -105,3 +105,41 @@ export const LogoutAction = async () => {
         }
     }
 };
+
+
+
+export const DoctorRegister = async (data: any) => {
+    try {
+        const TOKEN = cookies().get("accessToken");
+        console.log(TOKEN)
+        const response = await fetch(`${BASEURL}/community/doctors?format=json`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "JWT " + TOKEN?.value
+            },
+            body: JSON.stringify(data)
+        })
+
+        console.log(response)
+        const result = await response.json();
+        if (result.id) {
+            return {
+                success: true,
+                message: "Registration successful",
+                data: result
+            }
+        }
+        return {
+            success: false,
+            message: "Registration unsuccessful",
+            data: result
+        };
+    } catch (error) {
+        console.log(error)
+        return {
+            success: false,
+            message: "Something went wrong!"
+        }
+    }
+}
