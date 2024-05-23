@@ -18,6 +18,7 @@ import { Form } from "@/components/ui/form";
 import InputX from "@/app/_utils/components/input-x";
 import FetchResponse from "@/app/_utils/components/fetch.response";
 import { useRouter } from "next/navigation";
+import SubmitButton from "@/app/_utils/components/submit.button";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -53,11 +54,18 @@ export default function Page() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <InputX form={form} name="username" label="Username" />
-              <InputX form={form} name="password" label="Password" />
+              <InputX
+                form={form}
+                name="password"
+                label="Password"
+                type="password"
+              />
 
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
+              <SubmitButton
+                pending={form.formState.isSubmitting}
+                text="Login"
+                className="w-full"
+              />
             </form>
           </Form>
         </CardContent>

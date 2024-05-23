@@ -1,11 +1,5 @@
-import PrivateSSRRoute from "@/components/layout/private.ssr.route";
-
 const Page = () => {
-  return (
-    <PrivateSSRRoute>
-      <div>Dashboard</div>
-    </PrivateSSRRoute>
-  );
+  return <section className="section container">Dashboard</section>;
 };
 
 export default Page;

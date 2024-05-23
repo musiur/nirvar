@@ -18,6 +18,8 @@ import InputX from "@/app/_utils/components/input-x";
 import { Form } from "@/components/ui/form";
 import { Register } from "../_utils/actions";
 import FetchResponse from "@/app/_utils/components/fetch.response";
+import SubmitButton from "@/app/_utils/components/submit.button";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -30,6 +32,7 @@ const FormSchema = z.object({
 type T_FormSchema = z.infer<typeof FormSchema>;
 
 export default function Page() {
+  const router = useRouter();
   const form = useForm<T_FormSchema>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -40,12 +43,16 @@ export default function Page() {
   });
 
   const onSubmit = async (data: T_FormSchema) => {
-    const result = await Register(data);
-    console.log(result);
+    const result: any = await Register(data);
+    // console.log(result);
     FetchResponse({
-      apiResponse: { success: true, message: "Registration Successful" },
+      apiResponse: result,
       title: "Registration",
     });
+
+    if (result.success) {
+      router.push("/auth/login");
+    }
   };
   return (
     <div className="flex items-center justify-center">
@@ -83,9 +90,11 @@ export default function Page() {
                   </Label>
                 </div>
               </div>
-              <Button type="submit" className="w-full">
-                Register
-              </Button>
+              <SubmitButton
+                pending={form.formState.isSubmitting}
+                text="Register"
+                className="w-full"
+              />
             </form>
           </Form>
         </CardContent>

@@ -19,8 +19,18 @@ export const Register = async (data: { email: string, password: string, username
         })
 
         const result = await response.json();
-        console.log(result)
-        return result;
+        if (result.id) {
+            return {
+                success: true,
+                message: "Registration successful",
+                data: result
+            }
+        }
+        return {
+            success: false,
+            message: "Registration unsuccessful",
+            data: result
+        };
     } catch (error) {
         console.log(error)
         return {
