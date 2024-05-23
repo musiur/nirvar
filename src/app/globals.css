@@ -46,7 +46,7 @@
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
-    --primary-foreground: 262.8 79.5% 45.9%; /* Updated primary foreground */
+    --primary-foreground: 262.8 79.5% 45.9%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -62,7 +62,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 262.8 79.5% 45.9%; /* Updated ring color */
+    --ring: 262.8 79.5% 45.9%;
   }
 }
 
