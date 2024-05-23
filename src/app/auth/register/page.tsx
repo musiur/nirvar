@@ -15,9 +15,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import InputX from "@/app/_utils/components/input-x";
-import { toast } from "@/components/ui/use-toast";
 import { Form } from "@/components/ui/form";
 import { Register } from "../_utils/actions";
+import FetchResponse from "@/app/_utils/components/fetch.response";
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -40,17 +40,12 @@ export default function Page() {
   });
 
   const onSubmit = async (data: T_FormSchema) => {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-
     const result = await Register(data);
     console.log(result);
+    FetchResponse({
+      apiResponse: { success: true, message: "Registration Successful" },
+      title: "Registration",
+    });
   };
   return (
     <div className="flex items-center justify-center">
