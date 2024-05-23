@@ -13,19 +13,19 @@ export default function Component() {
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Contact Us
               </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+              <p className="max-w-[400px] text-gray-500 dark:text-gray-400">
                 Get in touch with us for more information about our organization
                 and how you can get involved.
               </p>
             </div>
             <div className="w-full max-w-md space-y-4">
-              <form className="grid gap-4">
+              <form className="grid gap-8">
                 <div className="grid gap-2">
                   <Label htmlFor="name">Name</Label>
                   <Input id="name" placeholder="Enter your name" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Email Address</Label>
                   <Input
                     id="email"
                     placeholder="Enter your email"
