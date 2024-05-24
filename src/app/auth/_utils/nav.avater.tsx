@@ -11,9 +11,7 @@ import Link from "next/link";
 import { User } from "lucide-react";
 
 const NavAvatar = async ({ userdata }: { userdata: any }) => {
-  const TOKEN = userdata.value ? JSON.parse(userdata.value)?.access : "";
-
-  const result = await GetProfileData(TOKEN);
+  const result = await GetProfileData();
 
   return (
     <Popover>

@@ -51,22 +51,26 @@ export const LoginAction = async (data: { username: string, password: string }) 
             body: JSON.stringify(data)
         })
         const result = await response.json();
+        console.log(result)
         if (result.access) {
-            COOKIES.set("accessToken", result.access);
+            COOKIES.set("accessToken", `${result.access}`);
             COOKIES.set("userdata", JSON.stringify(result))
             redirect("/dashboard")
+        } else {
+            return result;
         }
 
     } catch (error) {
-        console.log(error)
-        return {
-            success: false,
-            message: "Something went wrong!"
-        }
+        console.log("---->", error)
+        // return {
+        //     success: false,
+        //     message: "Something went wrong!"
+        // }
     }
 }
-export const GetProfileData = async (TOKEN: string) => {
+export const GetProfileData = async () => {
     try {
+        const TOKEN = cookies().get("accessToken")?.value;
         const response = await fetch(`${BASEURL}/community/audience/me`, {
             method: "GET",
             headers: {

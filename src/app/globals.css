@@ -78,3 +78,7 @@
     @apply py-8 md:py-16;
   }
 }
+
+.ql-editor {
+  @apply min-h-[120px];
+}

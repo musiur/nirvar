@@ -44,7 +44,7 @@ export default function Page() {
 
   const onSubmit = async (data: T_FormSchema) => {
     const result: any = await Register(data);
-    // console.log(result);
+    console.log(result);
     FetchResponse({
       apiResponse: result,
       title: "Registration",
@@ -106,14 +106,6 @@ export default function Page() {
               href="/auth/login"
             >
               Login
-            </Link>
-          </div>
-          <div className="text-center text-sm text-gray-500 dark:text-gray-400">
-            <Link
-              className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-              href="/auth/register/doctor"
-            >
-              Retister As A Doctor!
             </Link>
           </div>
         </CardFooter>

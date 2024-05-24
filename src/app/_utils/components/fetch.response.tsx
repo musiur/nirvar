@@ -11,14 +11,13 @@ const FetchResponse = ({
   };
   title?: string;
 }) => {
-  const { success } = apiResponse;
   toast({
-    variant: success ? "default" : "destructive",
+    variant: apiResponse?.success ? "default" : "destructive",
     title,
     description: `${
       apiResponse?.message ||
       apiResponse?.messages?.toString() ||
-      "Toast message description"
+      "Request Fetched!"
     }`,
   });
   return null;
